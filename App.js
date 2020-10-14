@@ -1,15 +1,21 @@
 import React from "react";
 import Home from './layout/Home';
 import Login from './layout/login/Login';
+import Product from './Product';
 import { NativeRouter, Switch, Route, Link, Router } from "react-router-native";
-import { Redirect } from 'react-router'
+import createHistory from 'history/createMemoryHistory';
+
+const history = createHistory();
+
 export default function App(){
   return (
     <NativeRouter>
-      <Redirect exact from="/layout" to="./layout/Home" />
-        <Route path="./layout/Home">
-          <Login />
-        </Route>
+              <Router history={history}>
+                <Switch>
+                    <Route exact path="/" component={Login} />
+                    <Route exact path="/product" component={Product} />
+                </Switch>
+              </Router>
     </NativeRouter>
   )
 }

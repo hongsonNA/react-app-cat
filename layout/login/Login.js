@@ -5,7 +5,7 @@ import { NativeRouter, Switch, Route, Link, Router } from "react-router-native";
 import Home from '../Home';
 import createHistory from 'history/createMemoryHistory';
 
-const history = createHistory();
+// const history = createHistory();
 
 const Login = ({ history })=>{
       return(
@@ -17,7 +17,8 @@ const Login = ({ history })=>{
             <Text>Password</Text>
             <TextInput style={styles.styleTextInput}  defaultValue="" />
             <StatusBar style="auto" /> */}
-            <Button onPress={() => history.push('../Home')} style={styles.buttonLet} title="Let Go!!" />
+            {/* <Button onPress={() => history.push('/product')} style={styles.buttonLet} title="Let Go!!" /> */}
+            <Link to="/product"><Text>Go to Other</Text></Link>
         </View>
     )
     

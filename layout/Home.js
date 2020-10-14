@@ -4,13 +4,16 @@ import { StyleSheet, Text, View, Image, ScrollView, TextInput, Button, Alert,Saf
 
 
 const Home = ({ history })=> {
-  <ScrollView>
-    <View style={styles.container}>
-      <Text>Home Page</Text>
-    </View>
+  return(
+    <ScrollView>
+     <View style={styles.container}>
+            <SafeAreaView style={styles.container}></SafeAreaView>
+              <Image  source={{  uri: 'https://reactnative.dev/docs/assets/p_cat2.png', }} style={{ width: 200, height: 200 }} />
+              <Text> 🎉Wellcome to park animal 🎉</Text>
+        </View>
   </ScrollView>
+  )
 }
-
 export default Home;
 const styles = StyleSheet.create({
     container: {
