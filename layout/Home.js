@@ -1,24 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TextInput, Button, Alert,SafeAreaView } from 'react-native';
-
-
+import NewsFeed from './page/NewsFeed';
+import { Entypo } from '@expo/vector-icons'; 
+import { Card, Block, theme,Icon  } from 'galio-framework';
 const Home = ()=> {
+  const defaultAvatar = 'https://scontent.fhan3-1.fna.fbcdn.net/v/t1.0-1/p200x200/53014682_1993197010985402_6718108056795742208_n.jpg?_nc_cat=109&_nc_sid=7206a8&_nc_ohc=hzPVydm3epwAX_idq9a&_nc_ht=scontent.fhan3-1.fna&tp=6&oh=6e496fac4550d196df65490f288e7315&oe=5FAE0DAA';
+  const default_image = 'https://images.unsplash.com/photo-1497802176320-541c8e8de98d?&w=1600&h=900&fit=crop&crop=entropy&q=300';
   var story = [];
-  for (let i = 0; i < 6; i++) {
-    story.push(
-      <Image  source={{uri: 'https://scontent.fhan3-1.fna.fbcdn.net/v/t1.0-1/p200x200/53014682_1993197010985402_6718108056795742208_n.jpg?_nc_cat=109&_nc_sid=7206a8&_nc_ohc=hzPVydm3epwAX_idq9a&_nc_ht=scontent.fhan3-1.fna&tp=6&oh=6e496fac4550d196df65490f288e7315&oe=5FAE0DAA',}} 
-                style={styles.storyFeed} />
-    );
-  }
+    for (let i = 0; i < 6; i++) {
+      story.push(
+        <Block key={i} style={{position: "relative"}}>
+          <Image  source={{uri: defaultAvatar,}} style={styles.storyFeed} />
+          <Block style={styles.borderStory}>
+            {i==0 ?<Entypo name="plus"  size={24} color="black" /> : <Image style={{width:'100%', height:'100%', borderRadius:20}} source={{ uri: i % 2 ?defaultAvatar:default_image }} /> }
+          </Block>
+        </Block>
+        
+      );
+    }
   return(
     <ScrollView>
-     {/* <View style={styles.container}>
-            <SafeAreaView style={styles.container}></SafeAreaView>
-              <Image  source={{  uri: 'https://reactnative.dev/docs/assets/p_cat2.png', }} style={{ width: 200, height: 200 }} />
-              <Text> 🎉Wellcome to park animal 🎉</Text>
-        </View> */}
-        <View style={{
+      <View style={{
             flex: 1,
             flexDirection: 'column',
             justifyContent: 'center',
@@ -62,19 +65,17 @@ const Home = ()=> {
            <Text style={{padding:10, fontSize:14 }}>Tin</Text>
       </View>
       {/* story */}
-      <View style={{flex: 1, flexDirection: 'row', paddingLeft:10,paddingRight:10}}>
-      <ScrollView  horizontal={true}>
-        <View style={{width: 50, height: 'auto',flex: 1, flexDirection: 'row', }}>
-        {story}
-        </View>
+      <Block>
+        <View >
+        <ScrollView  horizontal={true} >
+          <View style={styles.storyList}>
+          {story}
+          </View>
+        </ScrollView>
         {/* news feed */}
-        <View>
-            
+        <NewsFeed/>
         </View>
-      </ScrollView>
-       
-      </View>
-      
+      </Block>
   </ScrollView>
   )
   
@@ -110,5 +111,25 @@ const styles = StyleSheet.create({
       height:160,
        borderRadius:15,
        marginRight:7,
+    },
+    storyList:{
+      width: '100%',
+      height: 'auto',
+      flex: 1,
+      flexDirection: 'row',
+      marginTop:0,
+      borderBottomWidth:5,
+      padding:10,
+      paddingTop:0,
+      paddingBottom:10,
+      borderBottomColor:'#E0DEDE',
+    },
+    borderStory:{
+      position:"absolute",
+      top:5,left:5,
+      width:30,height:30,
+      borderRadius:20,
+      borderWidth:3,
+      borderColor:'#2E89FF'
     }
 });

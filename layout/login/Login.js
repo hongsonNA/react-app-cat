@@ -8,17 +8,18 @@ import createHistory from 'history/createMemoryHistory';
 // const history = createHistory();
 
 const Login = ({ history })=>{
+  
       return(
         <View style={styles.container}>
             <SafeAreaView style={styles.container}></SafeAreaView>
                 <Image  source={{  uri: 'https://reactnative.dev/docs/assets/p_cat2.png', }} style={{ width: 200, height: 200 }} />
-            {/* <Text>Tài khoản</Text>
+            <Text>Tài khoản</Text>
             <TextInput style={styles.styleTextInput}  defaultValue=""/>
             <Text>Password</Text>
             <TextInput style={styles.styleTextInput}  defaultValue="" />
-            <StatusBar style="auto" /> */}
+            <StatusBar style="auto" />
             {/* <Button onPress={() => history.push('/product')} style={styles.buttonLet} title="Let Go!!" /> */}
-            <Link to="/product"><Text>Go to Other</Text></Link>
+            <Link to="/Home"><Text>Go to Home</Text></Link>
         </View>
     )
     
